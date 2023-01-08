@@ -1,0 +1,8 @@
+[
+    {
+        "instance_prompt": "photo of zwx man",
+        "class_prompt": "photo of a man",
+        "instance_data_dir": "/work/input",
+        "class_data_dir": "/work/dreambooth/class-images"
+    }
+]
