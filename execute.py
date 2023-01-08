@@ -112,7 +112,7 @@ print("Training completed")
 # 5. Get generated weights and load them to GPU
 from natsort import natsorted
 from glob import glob
-WEIGHTS_DIR = natsorted(glob(OUTPUT_DIR + os.sep + "*"))[-1]
+WEIGHTS_DIR = natsorted(glob(output_dir + os.sep + "*"))[-1]
 
 print(f"[*] WEIGHTS_DIR={WEIGHTS_DIR}")
 
