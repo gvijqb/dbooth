@@ -11,6 +11,7 @@ output_dir = os.getenv("OUTPUT_DIR", default=None)
 final_images_dir = os.getenv("FINAL_IMAGES", default=None)
 image_urls = os.getenv("IMAGE_URLS", default=None)
 prompt_value = os.getenv("OBJECT", default=None)
+train_steps = os.getenv("TRAIN_STEPS", default=1900)
 
 
 prompt_list = [
@@ -98,7 +99,7 @@ command = ["accelerate", "launch", "train_dreambooth.py",
            "--lr_warmup_steps=0",
            "--num_class_images=200",
            "--sample_batch_size=4",
-           "--max_train_steps=1900",
+           "--max_train_steps="+str(train_steps),
            "--save_interval=10000",
            "--save_sample_prompt=photo of zwx "+prompt_value,
            "--concepts_list=concepts_list.json"]
@@ -119,7 +120,6 @@ print(f"[*] WEIGHTS_DIR={WEIGHTS_DIR}")
 import torch
 from torch import autocast
 from diffusers import StableDiffusionPipeline, DDIMScheduler
-from IPython.display import display
 
 model_path = WEIGHTS_DIR
 scheduler = DDIMScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", clip_sample=False, set_alpha_to_one=False)
